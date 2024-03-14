@@ -72,3 +72,14 @@
 /* .input-group input:invalid {
   border: 3px solid red;
 } */
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Automatically adjust column width */
+  grid-gap: 10px; /* Spacing between grid items */
+}
+
+.grid-item {
+  width: 100%; /* Make images fill the entire grid cell */
+  height: auto; /* Maintain aspect ratio */
+}

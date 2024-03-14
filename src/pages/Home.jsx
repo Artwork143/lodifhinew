@@ -2,7 +2,31 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import Carousel from "../components/Carousel";
 import ImageLink from "../components/ImageLink";
-import Carousel2 from "../components/Carousel2";
+// import Carousel2 from "../components/Carousel2";
+import { Carousel as Carouselv2 } from 'flowbite-react';
+import { carouselData } from "../data";
+
+function Pictures(carouselData) {
+  return (
+    <div>
+            <img
+              src={carouselData.Source}
+              alt="Logo of all HMO"
+              className="shadow-md"
+            ></img>
+          </div>
+  )
+}
+
+function Carousel2() {
+  return (
+    <div className="h-56 sm:h-64 xl:h-80 2xl:h-[600px]">
+      <Carouselv2>
+      {carouselData.map(Pictures)}
+      </Carouselv2>
+    </div>
+  );
+}
 
 function Home() {
   return (
@@ -24,13 +48,13 @@ function Home() {
       </div> */}
 
       <div
-        class="h-[200px] lg:h-[600px] overflow-hidden bg-cover bg-no-repeat flex lg:grid lg:grid-cols-2 justify-start items-center"
+        class="h-[200px] lg:h-[600px] overflow-hidden bg-cover bg-no-repeat flex lg:grid lg:grid-cols-6 justify-start items-center gap-5"
         style={{
           backgroundPosition: "50%",
           backgroundImage: `url('homepagemobile.jpg')`,
         }}
       >
-        <div className="lg:ml-28 xl:ml-44 2xl:ml-80 duration-500 border-l-[#337CCF] border-l-4 pl-2 ml-5">
+        <div className="col-start-2 col-span-2 duration-500 border-l-[#337CCF] border-l-4 pl-2 ml-5 lg:ml-0">
           <h1 className="text-xl lg:text-4xl text-slate-50 font-bold cursor-default">
             YOUR HEALTH <br />
             IS OUR CONCERN
@@ -44,7 +68,7 @@ function Home() {
             </NavLink>
           </button>
         </div>
-        <div className="lg:mr-28 xl:mr-44 2xl:mr-80">
+        <div className="col-start-4 col-end-6 hidden lg:block">
           <Carousel2 />
         </div>
       </div>
