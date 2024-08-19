@@ -14,8 +14,12 @@ app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const uri = `mongodb+srv://${process.env.MONGODBPASS}@cluster0.qe1zc6f.mongodb.net/userDB?ssl=true&authSource=admin`;
+// const uri = `mongodb+srv://${process.env.MONGODBPASS}@cluster0.qe1zc6f.mongodb.net/userDB?ssl=true&authSource=admin`;
+const uri = `mongodb://atlas-sql-650692e554ae6f2ea929b085-ngts5.a.query.mongodb.net/userDB?ssl=true&authSource=admin`;
 const PORT = process.env.PORT || 3000;
+
+
+
 
 app.use(
   session({
