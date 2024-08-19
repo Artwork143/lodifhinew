@@ -1,16 +1,47 @@
 import React, { useState } from "react";
+import { useNavigate, NavLink } from "react-router-dom";
+import axios from "axios";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+  const [border, setBorder] = useState(false);
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   axios
+  //     .post("http://localhost:3000/login", { email, password })
+  //     .then((result) => {
+  //       console.log(result);
+  //       if (result.data === "Success") {
+  //         navigate("/profile");
+  //       } else {
+  //         setBorder(true);
+  //       }
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:3000/login', {
+        email,
+        password,
+      });
+      console.log(response.data);
+      if (response.data === "Success") {
+        navigate("/profile");
+      } else {
+        setBorder(true);
+      }
+    } catch (error) {
+      console.error('Login failed:', error.response?.data?.message || error.message);
+    }
   };
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
 
   // const correctEmail = "Email@com";
   // const correctPass = "Password";
@@ -31,19 +62,17 @@ const LoginForm = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 overflow-hidden">
       <div className="w-full max-w-md ">
-        {/* <div
+        <div
           className={`${
             border ? `opacity-100` : ` translate-x-full opacity-0`
           } shadow-md mb-5 flex transition-all duration-500 bg-red-200 border py-2 border-red-500 items-center flex-col text-gray-950 text-opacity-80`}
         >
           <p className="font-bold">Wrong Credentials</p>
           <p>Invalid username or password</p>
-        </div> */}
+        </div>
         <form
-          action="/login"
-          method="POST"
           className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-[100px]"
-          // onSubmit={handleSubmit}
+          onSubmit={handleSubmit}
         >
           <div className="input-group">
             <input
@@ -54,7 +83,7 @@ const LoginForm = () => {
               }`}
               type="email"
               value={email}
-              onChange={handleEmailChange}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <label>Email</label>
           </div>
@@ -65,7 +94,7 @@ const LoginForm = () => {
               className="border-[1.2px] border-gray-300 sm:text-sm"
               type="password"
               value={password}
-              onChange={handlePasswordChange}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <label>Password</label>
           </div>
@@ -79,6 +108,7 @@ const LoginForm = () => {
             </button>
           </div>
         </form>
+        <NavLink to="/profile" className="hover:text-red-900">Profile</NavLink>
       </div>
     </div>
   );

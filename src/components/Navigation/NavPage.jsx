@@ -14,6 +14,9 @@ import OPD from "../../pages/OPD";
 import Doctors from "../../pages/Doctors";
 import PatientRooms from "../../pages/PatientRooms";
 import LoginForm from "../LoginForm";
+import SignUp from "../SignUp";
+import Profile from "../../pages/Profile";
+import ProtectedRoute from "../ProtectedRoute";
 
 
 function NavPage() {
@@ -34,6 +37,9 @@ function NavPage() {
         <Route path="/about/patientrooms" element={<PatientRooms />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<LoginForm />} />
+        <Route path="/logout" element={<LoginForm />} />
+        <Route path="/register" element={<ProtectedRoute element={SignUp} />} />
+        <Route path="/profile" element={<ProtectedRoute element={Profile} />} />
       </Routes>
     </div>
   );
