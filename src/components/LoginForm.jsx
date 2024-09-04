@@ -108,7 +108,7 @@ const LoginForm = () => {
             </button>
           </div>
         </form>
-        <NavLink to="/profile" className="hover:text-red-900">Profile</NavLink>
+{/*         <NavLink to="/profile" className="hover:text-red-900">Profile</NavLink> */}
       </div>
     </div>
   );
