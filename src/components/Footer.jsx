@@ -125,13 +125,8 @@ function Footer() {
           ⓒ {year} Lopez District Farmers' Hospital, Incorporated. All rights
           reserved.
         </p>
-<<<<<<< HEAD
-        <p className=" text-red-200 text-sm lg:text-base">
-          <span className="hidden lg:inline-block">|</span> Develope by Dionisio
-=======
         <p className=" text-blue-200 text-sm lg:text-base">
-          <span className="hidden lg:inline-block">|</span> Develope by Dionisio
->>>>>>> 9d88c347bba0f69b71f4316928987643d087e10b
+          <span className="hidden lg:inline-block">|</span> Developed by Dionisio
           Miñano Jr.
         </p>
       </footer>
